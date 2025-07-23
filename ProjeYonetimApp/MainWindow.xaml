@@ -1,0 +1,193 @@
+﻿<Window x:Class="ProjeYonetimApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjeYonetimApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1400"
+        Background="AntiqueWhite"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="CircleButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Viewbox Stretch="Fill">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                
+
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="TopBorder" Orientation="Horizontal" VerticalAlignment="Stretch" Background="DarkBlue" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="35" Grid.RowSpan="1" MouseDown="TopBorderDrag">
+                <Label Content="MEKA" FontSize="15" FontFamily="Rockwell" Foreground="AntiqueWhite" FontWeight="ExtraBold" FontStretch="SemiCondensed" Margin="0,0,0,0" VerticalContentAlignment="Center"/>
+                <Label HorizontalAlignment="Center" Margin="570, 0, 0, 0" Content="Proje Yönetimi" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" FontFamily="Segoe UI" Foreground="AntiqueWhite" />
+            </StackPanel>
+            <Button x:Name="CloseButton"
+                    Grid.Column="34"  Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="1" 
+                    Background="Red" 
+                    Content="X" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="AntiqueWhite"
+                    BorderThickness="0" Style="{StaticResource CircleButton}"
+                    Click="CloseButton_Click"
+            />
+            <!-- CloseButton.png will be added later-->
+            <Button x:Name="FullScreenButton"
+                    Grid.Column="33"  Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="1" 
+                    Background="AntiqueWhite" 
+                    Content="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="DarkBlue"
+                    BorderThickness="0" Style="{StaticResource CircleButton}"
+                    Click="FullScreenButton_Click"
+            />
+            <Button x:Name="MinimizeButton"
+                    Grid.Column="32"  Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="1" 
+                    Background="AntiqueWhite" 
+                    Content="_" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="DarkBlue"
+                    BorderThickness="0" Style="{StaticResource CircleButton}"
+                    Click="MinimizeButton_Click"
+            />
+            <DataGrid x:Name="AsilListe"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="27" Grid.RowSpan="15">
+            <DataGrid.Columns>
+                <!-- 1. ID -->
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding [id]}"/>
+
+                <!-- 2. Otomasyon No -->
+                <DataGridTextColumn Header="Otomasyon No"
+                                    Binding="{Binding [otomasyonNo]}"/>
+
+                <!-- 3. Sorun Tarih -->
+                <DataGridTextColumn Header="Sorun Tarih"
+                                    Binding="{Binding [sorunTarih], StringFormat={}{0:dd-MM-yyyy}}"/>
+
+                <!-- 4. Çözüm Tarih -->
+                <DataGridTextColumn Header="Çözüm Tarih"
+                                    Binding="{Binding [cozumTarih], StringFormat={}{0:dd-MM-yyyy}}"/>
+
+                <!-- 5. Yükleme Tarih -->
+                <DataGridTextColumn Header="Yükleme Tarih"
+                                    Binding="{Binding [yuklemeTarih], StringFormat={}{0:dd-MM-yyyy}}"/>
+
+                <!-- 6. Sorun Sahibi -->
+                <DataGridTextColumn Header="Sorun Sahibi"
+                                    Binding="{Binding [sorunSahibi]}"/>
+
+                <!-- 7. Firma Adı -->
+                <DataGridTextColumn Header="Firma Adı"
+                                    Binding="{Binding [firmaAdi]}"/>
+
+                <!-- 8. Sorun Açıklama -->
+                <DataGridTextColumn Header="Sorun Açıklama"
+                                    Binding="{Binding [sorunAciklama]}"/>
+
+                <!-- 9. Çözüm Açıklama -->
+                <DataGridTextColumn Header="Çözüm Açıklama"
+                                    Binding="{Binding [cozumAciklama]}"/>
+
+                <!-- 10. Tel No -->
+                <DataGridTextColumn Header="Tel No"
+                                    Binding="{Binding [telNo]}"/>
+
+                <!-- 11. Durum -->
+                <DataGridTextColumn Header="Durum"
+                                    Binding="{Binding [sorunDurumu]}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+            <Label Content="by Asil Ata Karakoç" Grid.Row="20" FontFamily="Times New Roman" FontStyle="Italic" Grid.ColumnSpan="3" VerticalContentAlignment="Bottom"/>
+            <Button x:Name="YeniGorevButonu" Grid.Row="4" Background="DarkBlue" Foreground="AntiqueWhite" Style="{StaticResource CircleButton}" Content="Yeni Görev Ekle" Grid.Column="30" Grid.ColumnSpan="4" Click="YeniGorevButonu_Click"/>
+            <Button x:Name="GorevSilButonu" Grid.Row="17" Background="Red" Foreground="AntiqueWhite" Style="{StaticResource CircleButton}" Content="Görevi Sil" Grid.Column="30" Grid.ColumnSpan="4" Click="GorevSilButonu_Click"/>
+            <Button x:Name="YapildiButonu" Grid.Row="6" Background="Yellow" Foreground="DarkBlue" Style="{StaticResource CircleButton}" Content="Yapıldı" Grid.Column="30" Grid.ColumnSpan="4" Click="YapildiButonu_Click"/>
+            <Button x:Name="YuklendiButonu" Grid.Row="8" Background="Lime" Foreground="DarkBlue" Style="{StaticResource CircleButton}" Content="Yüklendi" Grid.Column="30" Grid.ColumnSpan="4" Click="YuklendiButonu_Click"/>
+            <Button x:Name="FiltreButonu" Grid.Row="2" Grid.Column="27" Background="AntiqueWhite" BorderThickness="0" Click="FiltreButonu_Click">
+                <Image Source="/Images/filterbutton.png"/>
+            </Button>
+            <Expander x:Name="FiltreExpander"  Background="LightGray" Grid.Row="3" Grid.Column="28" Grid.ColumnSpan="5" Grid.RowSpan="3" HorizontalAlignment="Center" Visibility="Hidden" ExpandDirection="Right">  
+                <StackPanel Margin="5">  
+                    <CheckBox x:Name="BekleyenlerCheckbox" Content="Bekleyenler"/>  
+                    <CheckBox x:Name="YapilanlarCheckbox" Content="Yapılanlar"/>
+                    <CheckBox x:Name="YuklenenlerCheckbox" Content="Yüklenenler"/>
+                    <Button x:Name="FiltreyiUygulaButonu" Background="LimeGreen" Content="Uygula" FontSize="10" Click="FiltreyiUygulaButonu_Click"/>
+                </StackPanel>  
+            </Expander>
+            
+
+        </Grid>
+    </Viewbox>
+</Window>
+
+    

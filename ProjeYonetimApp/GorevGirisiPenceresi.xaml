@@ -1,0 +1,132 @@
+﻿<Window x:Class="ProjeYonetimApp.GorevGirisiPenceresi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjeYonetimApp"
+        mc:Ignorable="d"
+        Title="GorevGirisiPenceresi" Height="450" Width="800"
+        Background="AntiqueWhite"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen" >
+    <Window.Resources>
+        <Style x:Key="CircleButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center"
+                          VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Viewbox Stretch="Fill">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                
+                
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="TopBorder" Orientation="Horizontal" VerticalAlignment="Stretch"  Background="DarkBlue" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="35" Grid.RowSpan="1" MouseDown="TopBorderDrag">
+                <Label Content="MEKA" FontSize="15" FontFamily="Rockwell" Foreground="AntiqueWhite" FontWeight="ExtraBold" FontStretch="SemiCondensed" Margin="0,0,0,0" VerticalContentAlignment="Center"/>
+                <Label HorizontalAlignment="Center" Margin="570, 0, 0, 0" Content="Görev Ekle/Düzenle" HorizontalContentAlignment="Center" FontStretch="ExtraExpanded" VerticalContentAlignment="Center" FontSize="13" FontFamily="Segoe UI" Foreground="AntiqueWhite" />
+            </StackPanel>
+            <Button x:Name="CloseButton"
+        Grid.Column="30"  Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="1" 
+        Background="Red" 
+        Content="X" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="AntiqueWhite"
+        BorderThickness="0" Style="{StaticResource CircleButton}"
+        Click="CloseButton_Click"
+/>
+            <!-- CloseButton.png will be added later-->
+            <Button x:Name="FullScreenButton"
+        Grid.Column="29"  Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="1" 
+        Background="AntiqueWhite" 
+        Content="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="DarkBlue"
+        BorderThickness="0" Style="{StaticResource CircleButton}"
+        Click="FullScreenButton_Click"
+/>
+            <Button x:Name="MinimizeButton"
+        Grid.Column="28"  Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="1" 
+        Background="AntiqueWhite" 
+        Content="_" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="DarkBlue"
+        BorderThickness="0" Style="{StaticResource CircleButton}"
+        Click="MinimizeButton_Click"
+/>
+            <Label Content="Otomasyon Numarası:" FontSize="13" Grid.RowSpan="2" Foreground="DarkBlue" FontWeight="DemiBold" VerticalContentAlignment="Top" HorizontalContentAlignment="Right" Grid.Row="3" Grid.ColumnSpan="4" Grid.Column="3"/>
+            <TextBox x:Name="OtomasyonNoTextbox" Grid.Row="3" Grid.ColumnSpan="5" Grid.Column="8"/>
+            <Label Content="Sorunu Yaşayan Kişi:" FontSize="13" VerticalContentAlignment="Top" Grid.RowSpan="2"  Foreground="DarkBlue" FontWeight="DemiBold"  HorizontalContentAlignment="Right" Grid.Row="5" Grid.ColumnSpan="4" Grid.Column="3"/>
+            <TextBox x:Name="SorunSahibiTextbox" Grid.Row="5" Grid.ColumnSpan="5" Grid.Column="8"/>
+            <Label Content="Firma Adı:" FontSize="13" VerticalContentAlignment="Top" Grid.RowSpan="2"  Foreground="DarkBlue" FontWeight="DemiBold"  HorizontalContentAlignment="Right" Grid.Row="3" Grid.ColumnSpan="4" Grid.Column="17"/>
+            <TextBox x:Name="FirmaAdiTextbox" Grid.Row="3" Grid.ColumnSpan="5" Grid.Column="22"/>
+            <Label Content="Telefon Numarası:" FontSize="13" VerticalContentAlignment="Top" Grid.RowSpan="2"  Foreground="DarkBlue" FontWeight="DemiBold"  HorizontalContentAlignment="Right" Grid.Row="5" Grid.ColumnSpan="4" Grid.Column="17"/>
+            <TextBox x:Name="TelNoTextbox" Grid.Row="5" Grid.ColumnSpan="5" Grid.Column="22"/>
+            <Label Content="Sorunun Açıklaması:" FontSize="13" VerticalContentAlignment="Top" Grid.RowSpan="2"  Foreground="DarkBlue" FontWeight="DemiBold"  HorizontalContentAlignment="Right" Grid.Row="8" Grid.ColumnSpan="4" Grid.Column="3"/>
+            <TextBox x:Name="SorunAciklamaTextbox" Grid.Row="9" Grid.ColumnSpan="23" Grid.Column="4" Grid.RowSpan="3"/>
+            <Label Content="Çözümün Açıklaması:" FontSize="13" VerticalContentAlignment="Top" Grid.RowSpan="2"  Foreground="DarkBlue" FontWeight="DemiBold"  HorizontalContentAlignment="Right" Grid.Row="13" Grid.ColumnSpan="4" Grid.Column="3"/>
+            <TextBox x:Name="CozumAciklamaTextbox" Grid.Row="14" Grid.ColumnSpan="23" Grid.Column="4" Grid.RowSpan="3"/>
+            <Button x:Name="KaydetButonu" Content="Kaydet" FontSize="14" Grid.Row="18" Grid.Column="24" Grid.ColumnSpan="3" Background="DarkBlue" Foreground="AntiqueWhite" Style="{StaticResource CircleButton}" Click="KaydetButonu_Click"/>
+        </Grid>
+        
+    </Viewbox>
+</Window>
