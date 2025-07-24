@@ -152,14 +152,31 @@
                                     Binding="{Binding [firmaAdi]}"/>
 
                 <!-- 8. Sorun Açıklama -->
-                <DataGridTextColumn Header="Sorun Açıklama"
-                                    Binding="{Binding [sorunAciklama]}"/>
+                    <DataGridTextColumn x:Name="SorunAciklamaSutunu" Header="Sorun Açıklama" MaxWidth="150"
+                            Binding="{Binding [sorunAciklama]}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <EventSetter Event="MouseDoubleClick"
+        Handler="SorunAciklamaCell_DoubleClick"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
 
-                <!-- 9. Çözüm Açıklama -->
-                <DataGridTextColumn Header="Çözüm Açıklama"
-                                    Binding="{Binding [cozumAciklama]}"/>
+                    </DataGridTextColumn>
 
-                <!-- 10. Tel No -->
+                    <!-- 9. Çözüm Açıklama -->
+                    <DataGridTextColumn x:Name="CozumAciklamaSutunu" Header="Çözüm Açıklama" MaxWidth="150"
+                                    Binding="{Binding [cozumAciklama]}"
+                                    >
+                        
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <EventSetter Event="MouseDoubleClick"
+                                Handler="CozumAciklamaCell_DoubleClick"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+
+                    <!-- 10. Tel No -->
                 <DataGridTextColumn Header="Tel No"
                                     Binding="{Binding [telNo]}"/>
 

@@ -349,5 +349,40 @@ namespace ProjeYonetimApp
                 return;
             }
         }
+
+        private void CozumAciklamaCell_DoubleClick(object sender, EventArgs e) {
+
+            DataRowView row = (DataRowView)AsilListe.SelectedItem;
+            string text = string.Empty;
+            if (row != null)
+            {
+                TextBlock txtBlock = CozumAciklamaSutunu.GetCellContent(row) as TextBlock;
+                if (txtBlock != null)
+                {
+                    text = txtBlock.Text;
+                    
+                }
+            }
+            if (string.IsNullOrEmpty(text)) { return; }
+            DetayPenceresi detayGoster = new DetayPenceresi(text);
+            detayGoster.ShowDialog();
+        }
+        private void SorunAciklamaCell_DoubleClick(Object sender, EventArgs e) {
+            DataRowView row = (DataRowView)AsilListe.SelectedItem;
+            string text = string.Empty;
+            if (row != null)
+            {
+                TextBlock txtBlock = SorunAciklamaSutunu.GetCellContent(row) as TextBlock;
+                if (txtBlock != null)
+                {
+                    text = txtBlock.Text;
+
+                }
+            }
+            if (string.IsNullOrEmpty(text)) { return; }
+            DetayPenceresi detayGoster = new DetayPenceresi(text);
+            detayGoster.ShowDialog();
+        }
     }
+
 }
