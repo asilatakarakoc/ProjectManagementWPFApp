@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -383,6 +384,55 @@ namespace ProjeYonetimApp
             DetayPenceresi detayGoster = new DetayPenceresi(text);
             detayGoster.ShowDialog();
         }
+
+        private void ResimGostermeCell_DoubleClick(Object sender, EventArgs e)
+        {
+            // 1) Seçili satırı al
+            var row = AsilListe.SelectedItem as DataRowView;
+            if (row == null)
+                return;
+
+            // 2) attachmentPath sütununu oku
+            var pathObj = row["attachment"];
+            if (pathObj == DBNull.Value)
+            {
+                MessageBox.Show("Veritabanında resim yolu yok.");
+                return;
+            }
+
+            string path = pathObj.ToString();
+            if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
+            {
+                MessageBox.Show("Resim dosyası bulunamadı:\n" + path);
+                return;
+            }
+
+            // 3) Dosyadan BitmapImage oluştur
+            var bmp = new BitmapImage();
+            bmp.BeginInit();
+            bmp.UriSource = new Uri(path, UriKind.Absolute);
+            bmp.CacheOption = BitmapCacheOption.OnLoad;
+            bmp.EndInit();
+
+            // 4) Küçük bir pencere açıp resmi göster
+            var imgControl = new Image
+            {
+                Source = bmp,
+                Stretch = System.Windows.Media.Stretch.Uniform
+            };
+
+            var previewWin = new Window
+            {
+                Title = "Resim Önizleme",
+                Content = imgControl,
+                SizeToContent = SizeToContent.WidthAndHeight,
+                ResizeMode = ResizeMode.CanResize,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Owner = this
+            };
+            previewWin.ShowDialog();
+        }
+        }
     }
 
-}
+

@@ -125,7 +125,10 @@
             <TextBox x:Name="SorunAciklamaTextbox" Grid.Row="9" Grid.ColumnSpan="23" Grid.Column="4" Grid.RowSpan="3"/>
             <Label Content="Çözümün Açıklaması:" FontSize="13" VerticalContentAlignment="Top" Grid.RowSpan="2"  Foreground="DarkBlue" FontWeight="DemiBold"  HorizontalContentAlignment="Right" Grid.Row="13" Grid.ColumnSpan="4" Grid.Column="3"/>
             <TextBox x:Name="CozumAciklamaTextbox" Grid.Row="14" Grid.ColumnSpan="23" Grid.Column="4" Grid.RowSpan="3"/>
-            <Button x:Name="KaydetButonu" Content="Kaydet" FontSize="14" Grid.Row="18" Grid.Column="24" Grid.ColumnSpan="3" Background="DarkBlue" Foreground="AntiqueWhite" Style="{StaticResource CircleButton}" Click="KaydetButonu_Click"/>
+            <Button x:Name="KaydetButonu" Content="Kaydet" FontSize="14" Grid.Row="18" Grid.Column="24" Grid.ColumnSpan="3" Background="Orange" Foreground="DarkBlue" Style="{StaticResource CircleButton}" Click="KaydetButonu_Click"/>
+            <Label Content="Resim Ekle:" FontSize="13" VerticalContentAlignment="Top" Grid.RowSpan="2"  Foreground="DarkBlue" FontWeight="DemiBold"  HorizontalContentAlignment="Left" Grid.Row="18" Grid.ColumnSpan="4" Grid.Column="4" />
+            <Button x:Name="ResimEkleButonu" Style="{StaticResource CircleButton}" Grid.Row="18" Grid.Column="7" Content="Dosya Seç" FontSize="14"  Grid.ColumnSpan="3" Background="DarkBlue" Foreground="AntiqueWhite" Height="25" VerticalAlignment="Top" Click="ResimEkleButonu_Click"/>
+
         </Grid>
         
     </Viewbox>

@@ -26,6 +26,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <local:AttachmentToTextConverter x:Key="AttachmentToTextConverter"/>
     </Window.Resources>
     <Viewbox Stretch="Fill">
         <Grid>
@@ -183,7 +184,17 @@
                 <!-- 11. Durum -->
                 <DataGridTextColumn Header="Durum"
                                     Binding="{Binding [sorunDurumu]}"/>
-            </DataGrid.Columns>
+
+                    <!-- 12. Resim -->
+                    <DataGridTextColumn Header="Resim"
+                     Binding="{Binding [attachment], Converter={StaticResource AttachmentToTextConverter}}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <EventSetter Event="MouseDoubleClick" Handler="ResimGostermeCell_DoubleClick"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
         </DataGrid>
             <Label Content="by Asil Ata Karakoç" Grid.Row="20" FontFamily="Times New Roman" FontStyle="Italic" Grid.ColumnSpan="3" VerticalContentAlignment="Bottom"/>
             <Button x:Name="YeniGorevButonu" Grid.Row="4" Background="DarkBlue" Foreground="AntiqueWhite" Style="{StaticResource CircleButton}" Content="Yeni Görev Ekle" Grid.Column="30" Grid.ColumnSpan="4" Click="YeniGorevButonu_Click"/>

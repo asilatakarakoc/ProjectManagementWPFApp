@@ -20,6 +20,9 @@ namespace ProjeYonetimApp
     /// </summary>
     public partial class GorevGirisiPenceresi : Window
     {
+        // Store image path to be later sent to SQL (attachment)
+        private string attachmentPath = "";
+
         public GorevGirisiPenceresi()
         {
             InitializeComponent();
@@ -28,6 +31,7 @@ namespace ProjeYonetimApp
         SqlConnection connection;
         SqlCommand komut;
         SqlDataAdapter adapter;
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -62,12 +66,16 @@ namespace ProjeYonetimApp
             {
                 MessageBox.Show("Otomasyon Numarası boş bırakılamaz.");
                 return;
-            } else
+            }
+            else
             {
                 try
                 {
                     connection = new SqlConnection(connString);
-                    string query = "INSERT INTO GorevTablosu(otomasyonNo, sorunTarih, sorunSahibi, firmaAdi, sorunAciklama, cozumAciklama, telNo, sorunDurumu) VALUES (@otomasyonNo, @sorunTarih, @sorunSahibi, @firmaAdi, @sorunAciklama, @cozumAciklama, @telNo, @sorunDurumu)";
+                    string query = @"INSERT INTO GorevTablosu(otomasyonNo, sorunTarih, sorunSahibi, firmaAdi, 
+                                          sorunAciklama, cozumAciklama, telNo, sorunDurumu, attachment) 
+                                          VALUES (@otomasyonNo, @sorunTarih, @sorunSahibi, @firmaAdi, 
+                                          @sorunAciklama, @cozumAciklama, @telNo, @sorunDurumu, @attachment)";
                     komut = new SqlCommand(query, connection);
                     komut.Parameters.AddWithValue("@otomasyonNo", OtomasyonNoTextbox.Text);
                     komut.Parameters.AddWithValue("@sorunTarih", DateTime.Today);
@@ -77,14 +85,32 @@ namespace ProjeYonetimApp
                     komut.Parameters.AddWithValue("@cozumAciklama", CozumAciklamaTextbox.Text);
                     komut.Parameters.AddWithValue("@telNo", TelNoTextbox.Text);
                     komut.Parameters.AddWithValue("@sorunDurumu", "Beklemede.");
+                    // send the image path as attachment
+                    komut.Parameters.AddWithValue("@attachment", attachmentPath);
+
                     connection.Open();
                     komut.ExecuteNonQuery();
                     connection.Close();
                     this.DialogResult = true;
                 }
-                catch (Exception ex){
+                catch (Exception ex)
+                {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void ResimEkleButonu_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog
+            {
+                Filter = "Image Files (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                attachmentPath = openFileDialog.FileName;
+                MessageBox.Show("Selected image: " + attachmentPath);
             }
         }
     }
